@@ -1,0 +1,5 @@
+/.dist-buildwrapper/
+.project
+.settings/
+Setup.hs
+ninetynine-problems.cabal
