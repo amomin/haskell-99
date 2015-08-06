@@ -1,6 +1,6 @@
 module Problem04_Test where
 
-import Problem04 (myLength, myLength')
+import Problem04 (myLength, myLength', myLength'', myLength''', myLength'''')
 import Test.HUnit
 
 testEmpty :: ([a] -> Int) -> Test
@@ -35,7 +35,13 @@ main :: IO Counts
 testSchemas =  [testEmpty, testSingletonInt, testFiveElementList];
 --testSchemas =  [testEmpty]
 main = do
-    putStrLn "Testing elementAt"
+    putStrLn "Testing myLength"
     runTestTT $ TestList $ map (\x -> (x myLength)) testSchemas
-    putStrLn "Testing elementAt'"
+    putStrLn "Testing myLength'"
     runTestTT $ TestList $ map (\x -> (x myLength')) testSchemas
+    putStrLn "Testing myLength''"
+    runTestTT $ TestList $ map (\x -> (x myLength'')) testSchemas
+    putStrLn "Testing myLength'''"
+    runTestTT $ TestList $ map (\x -> (x myLength''')) testSchemas
+    putStrLn "Testing myLength''''"
+    runTestTT $ TestList $ map (\x -> (x myLength'''')) testSchemas
