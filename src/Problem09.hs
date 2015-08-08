@@ -29,3 +29,6 @@ pack2 (x:xs) =
 pack3 :: (Eq a) => [a] -> [[a]]
 pack3 [] = []
 pack3 (x:xs) = (x:(takeWhile (==x) xs)) : pack3 (dropWhile (==x) xs)
+
+pack :: (Eq a) => [a] -> [[a]]
+pack = pack2
