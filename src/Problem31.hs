@@ -25,6 +25,15 @@ isPrime2 n = applyfltr [2..n]
             | (head sieve) > sqrtn = elem n sieve
             | otherwise = applyfltr (fltr (head sieve) sieve)
 
+-- since we're here, may as well produce the list of all primes
+primesUpTo :: Int -> [Int]
+primesUpTo n = sieveOfEratosthenes [2..n]
+    where
+        fltr y sieve = filter (\x -> (mod x y) /= 0) sieve 
+        sieveOfEratosthenes :: [Int] -> [Int]
+        sieveOfEratosthenes [] = []
+        sieveOfEratosthenes (x:xs) = x:(sieveOfEratosthenes (fltr x xs))
+
 -- mix of above two, even though it will
 -- only check primes, still apparently slower
 -- than first method
