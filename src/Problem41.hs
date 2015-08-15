@@ -5,7 +5,11 @@ import Problem40(goldbach)
 
 -- just use problem to problem 40 and map it
 goldbachList :: Int -> Int -> [(Int,Int)]
-goldbachList a b = map goldbach [a,(a+2)..b]
+--goldbachList a b = map goldbach $ [a,(a+2)..b]
+--goldbachList a b = map goldbach $ filter (\x -> and [(x > 3), even x]) [a..b]
+goldbachList a b = map goldbach
+    $ filter (even)
+    $ dropWhile (< 4) [a..b]
 
 -- use above solution and filter
 -- could implement a faster solution by simply
