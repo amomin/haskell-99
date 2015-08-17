@@ -7,7 +7,7 @@ totient1 :: Int -> Int
 totient1 n = helper (primeFactorsMult n)
     where
         helper [] = 1
-        helper ps@((p,k):pt) = (p-1)*(p^(k-1))*(helper pt) 
+        helper ((p,k):pt) = (p-1)*(p^(k-1))*(helper pt) 
 
 -- basically the same solution using product and map instead
 totient2 :: Int -> Int

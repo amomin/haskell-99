@@ -5,19 +5,19 @@ import Problem35(primeFactors)
 import Problem10(encode)
 
 primeFactorsMult :: Int -> [(Int,Int)]
-primeFactorsMult n = reverse $ helper n (primesUpTo sqrtN) []
+primeFactorsMult m = reverse $ helper m (primesUpTo sqrtN) []
     where
-        sqrtN = 1 + (ceiling $ sqrt $ fromIntegral n)
+        sqrtN = 1 + (ceiling $ sqrt $ fromIntegral m)
         helper 1 _ factors = factors
-        helper n [] factors = ((n,1):factors)
+        helper n [] factors = (n,1):factors
         helper n ps@(p:pt) factors = 
-            if (mod n p) == 0
+            if mod n p == 0
                 then let k = primeComponent n p in helper (quot n (p^k)) ps ((p,k):factors) 
                 else helper n pt factors
         primeComponent n p = pchlpr n p 0
             where
-                pchlpr n p k
-                    | (mod n p) == 0 = pchlpr (quot n p) p (k+1)
+                pchlpr n1 p1 k
+                    | mod n1 p1 == 0 = pchlpr (quot n1 p1) p1 k+1
                     | otherwise = k
 
 -- from solutions
