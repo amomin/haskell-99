@@ -2,10 +2,13 @@ module Problem81 where
 
 import NNPGraphs
 
+paths, paths1 :: (Eq a) => Graph a -> a -> a -> [[a]]
+paths = paths1
+
 -- not a very efficient method but (hopefully) does the job
 -- needs a good test set
-paths1 :: (Eq a) => Graph a -> a -> a -> [[a]]
-paths1 g x y = reverse $ helper g x y [x]
+--paths1 :: (Eq a) => Graph a -> a -> a -> [[a]]
+paths1 g x y = map reverse $ helper g x y [x]
     where
         helper g end y currPath | end == y = [currPath]
         helper g v y currPath = concat
