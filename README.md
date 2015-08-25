@@ -1,7 +1,7 @@
 # Ninety-nine Haskell problems #
 
-Learning project from [https://wiki.haskell.org/99_questions/1_to_10](https://wiki.haskell.org/99_questions/1_to_10).
+Learning project from [https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems).
 
-Notes - 
-skipped problem 7
-skipped 66, but it's interesting so hope to return to it.
+Notes
+* skipped problem 7
+* skipped 66, but it's interesting so hope to return to it.
