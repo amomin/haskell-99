@@ -2,21 +2,6 @@ module Problem84 where
 
 import NNPGraphs
 
-helpsort :: [(a,a,Int)] -> [(a,a,Int)]
-helpsort [] = []
-helpsort (e@(_,_,n):es) = (helpsort $ filter (\(_,_,m) -> (m < n)) es)
-                        ++ (e:(filter (\(_,_,m) -> (m == n)) es))
-                        ++  (helpsort $ filter (\(_,_,m) -> (m > n)) es)
-
-edges :: WeightedGraph a -> [(a,a,Int)]
-edges (WeightedGraph _ es) = es
-
---vertices :: [(a,a,Int)] -> [a]
---vertices edgs = (map (\(x,y,_) -> x) edgs) ++ (map (\(x,y,_) -> y) edgs)
---vertices (WeightedGraph _ edgs) = (map (\(x,y,_) -> x) edgs) ++ (map (\(x,y,_) -> y) edgs)
-vertices :: WeightedGraph a -> [a]
-vertices (WeightedGraph vs _) = vs
-
 prim :: (Eq a) => WeightedGraph a -> (WeightedGraph a, Int)
 prim g@(WeightedGraph vs es) = helper (WeightedGraph vs (helpsort es)) 0 (WeightedGraph [(head vs)] []) 0
     where
@@ -34,4 +19,8 @@ prim g@(WeightedGraph vs es) = helper (WeightedGraph vs (helpsort es)) 0 (Weight
                                             ) es1
                     v = if (not $ elem v1 pvs) then v1 else v2
                     remainingedges = filter (/= e) es1
-        
+        helpsort :: [(a,a,Int)] -> [(a,a,Int)]
+        helpsort [] = []
+        helpsort (e@(_,_,n):es) = (helpsort $ filter (\(_,_,m) -> (m < n)) es)
+                                ++ (e:(filter (\(_,_,m) -> (m == n)) es))
+                                ++  (helpsort $ filter (\(_,_,m) -> (m > n)) es)
